@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid 46610 Penelope Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_1280.jpg'); /* New background */
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .details-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #FFD700;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h1>Asteroid 46610 Penelope</h1>
+        <img src="https://th.bing.com/th/id/OIG4.8j8MiQAlGe_XefczVNbr?rs=1&pid=ImgDetMain" alt="Asteroid 46610 Penelope">
+        <h2>Overview</h2>
+        <p>Asteroid 46610 Penelope is a stony asteroid located in the main asteroid belt. It was discovered on October 29, 1989, by astronomers at the Palomar Observatory.</p>
+        
+        <h2>Key Details</h2>
+        <p><strong>Discovery Date:</strong> October 29, 1989<br>
+        <strong>Diameter:</strong> Approximately 8.5 km (5.3 miles)<br>
+        <strong>Orbital Period:</strong> Takes about 4.75 years to orbit the Sun<br>
+        <strong>Velocity:</strong> Travels at an average speed of about 24.65 km/s (15.34 miles/s)<br>
+        <strong>Classification:</strong> It is classified as an S-type asteroid.</p>
+        
+        <h2>Structure & Composition</h2>
+        <p>Penelope is primarily composed of silicate materials and metals. Its surface reflects light in a way typical of stony asteroids.</p>
+        
+        <h2>Function & Purpose</h2>
+        <p>While it doesn’t have a specific purpose like a space mission, studying asteroids like Penelope helps scientists understand the formation and evolution of our solar system.</p>
+        
+        <h2>Notable Features</h2>
+        <p>Penelope is one of the larger asteroids in the main belt and has been the subject of various observational studies to gather data on its surface composition and dynamics.</p>
+    </div>
+
+    <script>
+        // Function to create twinkling stars effect
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; 
+                container.appendChild(star);
+            }
+        }
+        createStars(50); // Create 50 stars
+    </script>
+</body>
+</html>

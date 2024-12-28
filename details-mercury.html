@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercury Details</title>
+    <link rel="stylesheet" href="styles.css"> <!-- رابط لملف CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_1280.jpg'); /* استخدم رابط خلفية جديد من Pixabay */
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: auto; /* جعل الصفحة قابلة للتمرير */
+            height: 100vh; /* ضمان ملئ ارتفاع الصفحة */
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .details-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+        img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #FFD700; /* إطار ذهبي */
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        /* نجوم متحركة */
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h1>Mercury</h1>
+        <img src="https://cdn.pixabay.com/photo/2012/01/09/09/33/mercury-11591_1280.png" alt="Mercury">
+        <h2>General Information</h2>
+        <p>Kind: Planetary Earth<br>
+
+            Diameter: around 4,880 kilometers (3,032 miles)<br>
+            
+            Surface Temperature: Variable from 427°C (800°F) during the day to -173°C (-280°F) at night</p>
+        <h2>Orbit Details</h2>
+        <p>Distance from the Sun: About 57.91 million km (36 million miles)<br>
+
+            Period of Orbit: 88 Earth days<br>
+            
+            Period of Rotation: 59 Earth days<br>
+            
+            Axial Tilt: 0.034 degrees (nearly no tilt)</p>
+        <h2>Speed and Closeness</h2>
+        <p>Orbital Velocity: Approximate average of 47.87 km/s (29.74 mi/s)<br>
+
+            Escape Velocity: 4.25 km/s (2.64 miles per hour)<br>
+            
+            Closest Approach to Earth: Approximately 77 million kilometers (48 million miles) every 116 days</p>
+        <h2>Possible Hazards</h2>
+        <p>Impact Hazard: No direct threat from Mercury to Earth; classified as a near-Earth object (NEO)<br>
+
+            Solar Radiation: High solar radiation exposure, important for mission planning<br>
+            
+            Surface Features: Extensively cratered surface, similar to the Moon<br>
+            
+            Magnetic Field: Weak magnetic field (about 1% of Earth's)<br>
+            
+            No Atmosphere: Extremely thin atmosphere, unable to retain heat</p>
+        <h2>Fascinating Information</h2>
+        <p>Day vs. Year: A rotation takes 59 Earth days, while a revolution around the Sun takes 88 days.<br>
+
+            Exploration: Only visited by MESSENGER and Mariner 10 spacecraft.<br>
+            
+            Namesake: Named after the Roman messenger deity.</p>
+        <p>For more details, you can visit the following links:<br>
+            <a href="https://solarsystem.nasa.gov/planets/mercury/overview/" target="_blank" style="color: #FFD700;">Mercury - NASA</a><br>
+            <a href="https://solarsystem.nasa.gov/planets/mercury/in-depth/" target="_blank" style="color: #FFD700;">In Depth | Mercury - NASA​</a></p>
+    </div>
+
+    <script>
+        // دالة لإنشاء النجوم المتحركة
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; // مدة متغيرة
+                container.appendChild(star);
+            }
+        }
+
+        // إنشاء 50 نجمة
+        createStars(50);
+    </script>
+</body>
+</html>

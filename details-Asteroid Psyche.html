@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid Psyche Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_1280.jpg'); /* New background */
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .details-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #FFD700;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h1>Asteroid Psyche</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Psyche_illustration.jpg" alt="Asteroid Psyche">
+        <h2>Overview</h2>
+        <p>Asteroid Psyche is a unique near-Earth object believed to be primarily composed of metallic iron and nickel, offering insights into the building blocks of planetary formation.</p>
+        
+        <h2>Key Details</h2>
+        <p><strong>Diameter:</strong> Approximately 226 kilometers (140 miles).<br>
+        <strong>Composition:</strong> Primarily metallic iron and nickel, similar to Earth's core.<br>
+        <strong>Classification:</strong> Classified as a metallic asteroid located in the asteroid belt between Mars and Jupiter.</p>
+        
+        <h2>Orbital Dynamics</h2>
+        <p><strong>Orbital Period:</strong> Completes an orbit around the Sun approximately every 5.5 years.<br>
+        <strong>Path:</strong> Orbits within the main asteroid belt between Mars and Jupiter.</p>
+        
+        <h2>Scientific Exploration</h2>
+        <p>NASA plans to send a mission to explore Psyche, aiming to understand its composition, surface properties, and its history as a remnant of a protoplanet.</p>
+
+        <h2>Learn More</h2>
+        <p>For more details, you can visit the following links:<br>
+        <a href="https://www.nasa.gov/psyche" target="_blank" style="color: #FFD700;">NASA - Psyche Mission Overview</a><br>
+        <a href="https://en.wikipedia.org/wiki/16_Psyche" target="_blank" style="color: #FFD700;">Psyche on Wikipedia</a></p>
+    </div>
+
+    <script>
+        // Function to create twinkling stars effect
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; 
+                container.appendChild(star);
+            }
+        }
+        createStars(50); // Create 50 stars
+    </script>
+</body>
+</html>

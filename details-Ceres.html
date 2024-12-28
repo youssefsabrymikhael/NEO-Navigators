@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceres Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_1280.jpg'); /* New background */
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .details-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #FFD700;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h1>Ceres</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Ceres_-_RC3_-_Haulani_Crater_%2822381131691%29_%28cropped%29.jpg" alt="Ceres">
+        <h2>Discovery Details</h2>
+        <p><strong>Discovery Date:</strong> January 1, 1801</p>
+
+        <h2>Physical State</h2>
+        <p>
+            <strong>Diameter:</strong> ~940 km (largest asteroid in the asteroid belt)<br>
+            <strong>Composition:</strong> Rock and ice<br>
+            <strong>Surface:</strong> Mostly composed of water ice beneath a dusty, rocky crust
+        </p>
+        
+        <h2>Temperature</h2>
+        <p><strong>Ranges:</strong> ~-38°C to -105°C</p>
+        
+        <h2>Orbital Speed</h2>
+        <p><strong>Speed:</strong> ~17.9 km/s</p>
+        
+        <h2>Interesting Fact</h2>
+        <p><strong>Ceres is also classified as a dwarf planet.</strong><br>
+        It is the largest object in the asteroid belt between Mars and Jupiter.</p>
+
+        <h2>Learn More</h2>
+        <p>For more details, you can visit the following link:<br>
+        <a href="https://science.nasa.gov/dwarf-planets/ceres/" target="_blank" style="color: #FFD700;">Learn more about Ceres</a></p>
+    </div>
+
+    <script>
+        // Function to create twinkling stars effect
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; 
+                container.appendChild(star);
+            }
+        }
+        createStars(50); // Create 50 stars
+    </script>
+</body>
+</html>

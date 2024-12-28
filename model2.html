@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .search-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-container input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 200px;
+        }
+        
+        .search-container button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background: #4169e1;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .search-container button:hover {
+            background: #1e90ff;
+        }
+
+        .space-object {
+            transition: all 0.5s ease-out;
+        }
+
+        .space-object.zoomed {
+            transform: scale(2.5) translateZ(200px);
+            z-index: 1000;
+        }
+        .space-object.highlighted {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000205;
+            overflow: hidden;
+            perspective: 1500px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .space {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+        }
+        .earth-container {
+        position: relative;
+        z-index: 2;
+        transform-style: preserve-3d;
+        transition: all 1s ease-in-out;
+    }
+
+    .earth {
+        width: 300px;
+        height: 300px;
+        background: url('https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57735/land_ocean_ice_cloud_2048.jpg');
+        background-size: cover;
+        border-radius: 50%;
+        box-shadow: 
+            inset -30px -30px 50px rgba(0,0,0,.5),
+            inset 0 -5px 20px rgba(255,255,255,.4),
+            -5px -5px 30px rgba(0,0,0,.8),
+            0 0 50px 10px rgba(15,94,156,.3);
+        animation: earthRotate 24s linear infinite;
+        position: relative;
+    }
+    .earth::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        box-shadow: -80px -20px 50px 10px rgba(0,0,0,0.5) inset;
+    }
+    .iss-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        animation: issOrbit 90s linear infinite;
+    }
+
+    .iss {
+        width: 40px;
+        height: 24px;
+        position: absolute;
+        top: -12px;
+        left: -20px;
+        transform-style: preserve-3d;
+        transform: rotateX(-10deg) rotateY(20deg);
+        animation: issSpin 10s linear infinite;
+    }
+
+    .iss-body {
+        width: 100%;
+        height: 100%;
+        background-color: #c0c0c0;
+        position: absolute;
+        transform: translateZ(2px);
+    }
+
+    .iss-panel {
+        width: 60px;
+        height: 20px;
+        background-color: #4169e1;
+        position: absolute;
+        top: 2px;
+        left: -10px;
+        transform: rotateY(-90deg) translateZ(20px);
+    }
+
+    .iss-panel:nth-child(2) {
+        transform: rotateY(90deg) translateZ(20px);
+    }
+
+    @keyframes issOrbit {
+        0% { transform: rotate(0deg) translateX(160px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(160px) rotate(-360deg); }
+    }
+
+    @keyframes issSpin {
+        0% { transform: rotateX(-10deg) rotateY(20deg) rotateZ(0deg); }
+        100% { transform: rotateX(-10deg) rotateY(20deg) rotateZ(360deg); }
+    }
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .space-object {
+            position: absolute;
+            transform-origin: 50% 50%;
+            cursor: pointer;
+        }
+
+        .object-info {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .object-list {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .object-list-item {
+            cursor: pointer;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        .object-list-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+        }
+        .moon-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        animation: orbit 30s linear infinite;
+    }
+
+    .moon {
+        width: 82px;  /* About 27% of Earth's diameter */
+        height: 82px;
+        background: url('https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_1k.jpg');
+        background-size: cover;
+        border-radius: 50%;
+        position: absolute;
+        top: -41px;
+        left: -41px;
+        animation: moonRotate 30s linear infinite;
+        box-shadow: 
+            inset -10px -10px 20px rgba(0,0,0,.5),
+            inset 0 -2px 10px rgba(255,255,255,.4),
+            -2px -2px 10px rgba(0,0,0,.8);
+    }
+    @keyframes orbit {
+        0% { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+    }
+
+    @keyframes moonRotate {
+        0% { background-position: 0 0; }
+        100% { background-position: 164px 0; }
+    }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search space objects...">
+        <button id="searchButton">Search</button>
+    </div>
+    <div class="earth-container">
+        <div class="earth"></div>
+        <div class="moon-container">
+            <div class="moon"></div>
+        </div>
+    </div>
+    <div class="space"></div>
+    
+    </div>
+    <div class="object-list">
+        <h3>Space Objects</h3>
+    </div>
+    <div class="object-info"></div>
+    <div class="iss-container">
+        <div class="iss">
+            <div class="iss-body"></div>
+            <div class="iss-panel"></div>
+            <div class="iss-panel"></div>
+        </div>
+    </div>
+    <script>
+        const spaceObjects = [
+            {
+                name: "Moon",
+                type: "sphere",
+                orbitRadius: 180,
+                size: 25,
+                color: "#ffff",
+                orbitPeriod: 30,
+                info: "Earth's only natural satellite. Average distance: 384,400 km. Diameter: 3,475 km.",
+                image: "https://science.nasa.gov/wp-content/uploads/2023/09/moon_th.jpg?w=320"
+            },
+            {
+                name: "ISS",
+                type: "satellite",
+                orbitRadius: 170,
+                size: 8,
+                color: "#blue",
+                orbitPeriod: 1.5,
+                info: "Orbits at about 400 km above Earth's surface. Travels at approximately 7.66 km/s.",
+                image: "https://www.nasa.gov/wp-content/uploads/2020/09/sts_106_iss_departure_flyaround_sts106-375-018_0.jpg?w=985"
+            },
+            {
+                name: "2011 ES4",
+                type: "sphere",
+                orbitRadius: 220,
+                size: 12,
+                color: "#8B4513",
+                orbitPeriod: 15,
+                info: "Near-Earth asteroid that made a close approach in 2020.",
+                image: "https://i.pinimg.com/236x/47/e6/83/47e68340f69f706592a8c5c4f2afcd86.jpg"
+            },
+            {
+                name: "Bennu",
+                type: "sphere",
+                orbitRadius: 250,
+                size: 18,
+                color: "#6B4423",
+                orbitPeriod: 22,
+                info: "Near-Earth asteroid, target of NASA's OSIRIS-REx mission.",
+                image: "https://i.pinimg.com/236x/eb/5d/d7/eb5dd70baa5af7e03941908dbfd0143e.jpg"
+            },
+            {
+                name: "Ceres",
+                type: "sphere",
+                orbitRadius: 270,
+                size: 22,
+                color: "#33ffb8",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://i.pinimg.com/236x/81/41/5c/81415c80ba7de40072c6edf856bfef97.jpg"
+            },
+            {
+                name: "vesta",
+                type: "sphere",
+                orbitRadius: 300,
+                size: 25,
+                color: "#3349ff",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://i.pinimg.com/236x/59/7e/e7/597ee753ae81fc1e635750310c8df0b1.jpg"
+            },
+            {
+                name: "Apophis",
+                type: "sphere",
+                orbitRadius: 320,
+                size: 26,
+                color: "#7133ff",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2024/04/asteroid_99942_apophis/26021615-1-eng-GB/Asteroid_99942_Apophis_pillars.jpg"
+            },
+            {
+                name: "Ryugu",
+                type: "sphere",
+                orbitRadius: 340,
+                size: 25,
+                color: "#e333ff",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Ryugu_rotation.gif/220px-Ryugu_rotation.gif"
+            },
+            {
+                name: "Psyche",
+                type: "sphere",
+                orbitRadius: 370,
+                size: 25,
+                color: "#ff334c",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcSK49RdhP0OUAjQg8YDOn3IcIdgQb6cWbP6bzPMuNFe068Cxxp9gUTyctF-jfMpyGwF"
+            },
+            {
+                name: "Eros",
+                type: "sphere",
+                orbitRadius: 400,
+                size: 25,
+                color: "#275f5e",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Eros_-_PIA02923_%28color%29.jpg/290px-Eros_-_PIA02923_%28color%29.jpg"
+            },
+            {
+                name: "Meteors",
+                type: "sphere",
+                orbitRadius: 420,
+                size: 25,
+                color: "#9b8e32",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://static.scientificamerican.com/sciam/cache/file/3C413E35-54FB-4690-AB17A213F928E090_source.jpg?w=1200"
+            },
+            {
+                name: "2019QQ6",
+                type: "sphere",
+                orbitRadius: 440,
+                size: 25,
+                color: "#8d4910",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://theasteroidnews.com/7767AUT/wp-content/uploads/2020/08/small-asteroid.jpg"
+            },
+            {
+                name: "363027 1998ST27",
+                type: "sphere",
+                orbitRadius: 470,
+                size: 25,
+                color: "#8d1010",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1qCPUs.img?w=1635&h=920&m=4&q=79"
+            },
+            {
+                name: "v424482 2008DG5",
+                type: "sphere",
+                orbitRadius: 500,
+                size: 25,
+                color: "#b88383",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://www.spacereference.org/static/images/generic-asteroid.png"
+            },
+            {
+                name: "Asteroid Psyche",
+                type: "sphere",
+                orbitRadius: 520,
+                size: 25,
+                color: "#5d5d8c",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Psyche_illustration.jpg"
+            },
+            {
+                name: "Asteroid 2021 QM1",
+                type: "sphere",
+                orbitRadius: 530,
+                size: 25,
+                color: "#77dc6f",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://images.jpost.com/image/upload/q_auto/c_fill,g_faces:center,h_537,w_822/487268"
+            },
+            {
+                name: "Asteroid 46610 Penelope",
+                type: "sphere",
+                orbitRadius: 550,
+                size: 25,
+                color: "#749587",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://th.bing.com/th/id/OIG4.8j8MiQAlGe_XefczVNbr?rs=1&pid=ImgDetMain"
+            },
+            {
+                name: "Mercury",
+                type: "sphere",
+                orbitRadius: 570,
+                size: 35,
+                color: "#c0c000",
+                orbitPeriod: 25,
+                info: "Dwarf planet and largest object in the asteroid belt.",
+                image: "https://cdn.pixabay.com/photo/2012/01/09/09/33/mercury-11591_1280.png"
+            },
+        ];
+
+        
+        const additionalObjects = [
+              "" ,"" ,"" ,"",""
+        ].map((name, index) => ({
+            name,
+            type: "sphere",
+            orbitRadius: 260 + (index * 20),
+            size: 10 + (Math.random() * 8),
+            color: `#${Math.floor(Math.random()*16777215).toString(16)}`,
+            orbitPeriod: 18 + (index * 2),
+            info: `Near-Earth object with unique orbital characteristics.`,
+            image: "/api/placeholder/100/100"
+        }));
+
+        spaceObjects.push(...additionalObjects);
+
+        function createStars() {
+            const space = document.querySelector('.space');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = star.style.height = `${Math.random() * 2 + 1}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                space.appendChild(star);
+            }
+        }
+
+        function createOrbit(radius) {
+            const orbit = document.createElement('div');
+            orbit.className = 'orbit';
+            orbit.style.width = orbit.style.height = `${radius * 2}px`;
+            return orbit;
+        }
+
+        function createSpaceObject(object) {
+    const container = document.createElement('div');
+    container.className = 'space-object';
+    container.style.setProperty('--orbit-radius', `${object.orbitRadius}px`);
+    
+    const objectEl = document.createElement('div');
+    objectEl.style.width = objectEl.style.height = `${object.size}px`;
+    objectEl.style.backgroundColor = object.color;
+    objectEl.style.borderRadius = object.type === 'sphere' ? '50%' : '25%';
+    
+    container.appendChild(objectEl);
+    container.style.animation = `orbit ${object.orbitPeriod}s linear infinite`;
+    
+    container.addEventListener('click', (event) => {
+        event.stopPropagation();
+        zoomObject(container);
+        showObjectInfo(object);
+    });
+    
+    return container;
+}
+
+        function createObjectList() {
+            const list = document.querySelector('.object-list');
+            spaceObjects.forEach(object => {
+                const item = document.createElement('div');
+                item.className = 'object-list-item';
+                item.textContent = object.name;
+                item.addEventListener('click', () => showObjectInfo(object));
+                list.appendChild(item);
+            });
+        }
+
+        function showObjectInfo(object) {
+            const infoPanel = document.querySelector('.object-info');
+            infoPanel.innerHTML = `
+                <h3>${object.name}</h3>
+                <img src="${object.image}" alt="${object.name}" style="width: 100px; height: 100px;">
+                <p>${object.info}</p>
+            `;
+            infoPanel.style.display = 'block';
+        }
+
+        function init() {
+            createStars();
+            const earthContainer = document.querySelector('.earth-container');
+            
+            spaceObjects.forEach(object => {
+                const orbit = createOrbit(object.orbitRadius);
+                const spaceObject = createSpaceObject(object);
+                orbit.appendChild(spaceObject);
+                earthContainer.appendChild(orbit);
+            });
+            
+            createObjectList();
+        }
+
+        init();
+        function showObjectInfo(object) {
+    const infoPanel = document.querySelector('.object-info');
+    infoPanel.innerHTML = `
+        <h2>${object.name}</h2>
+        <img src="${object.image}" alt="${object.name}" style="width: 200px; height: 200px; object-fit: cover;">
+        <p><strong>Type:</strong> ${object.type}</p>
+        <p><strong>Distance from Earth:</strong> ${object.orbitRadius} units</p>
+        <p><strong>Color:</strong> ${object.color}</p>
+        <p><strong>Orbital Speed:</strong> ${(2 * Math.PI * object.orbitRadius / object.orbitPeriod).toFixed(2)} units/second</p>
+        <p><strong>Orbital Period:</strong> ${object.orbitPeriod} seconds</p>
+        <p><strong>Size:</strong> ${object.size} units</p>
+        <p><strong>Additional Info:</strong> ${object.info}</p>
+    `;
+    infoPanel.style.display = 'block';
+    
+    }
+
+function createMoon() {
+        const moonContainer = document.querySelector('.moon-container');
+        const moon = document.querySelector('.moon');
+        
+        moon.addEventListener('click', () => showObjectInfo({
+            name: "Moon",
+            image: "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_1k.jpg",
+            type: "Natural satellite",
+            orbitRadius: 200,  // This should match the translateX value in the orbit animation
+            color: "Gray",
+            orbitPeriod: 30,  // This should match the animation duration
+            size: 82,
+            info: "Earth's only natural satellite. Average distance: 384,400 km. Diameter: 3,475 km."
+        }));
+    }
+    function createISS() {
+        const issContainer = document.querySelector('.iss-container');
+        const iss = document.querySelector('.iss');
+        
+        iss.addEventListener('click', () => showObjectInfo({
+            name: "International Space Station (ISS)",
+            image: "https://www.nasa.gov/sites/default/files/thumbnails/image/iss064e027012.jpg",
+            type: "Space Station",
+            orbitRadius: 160, // This should match the translateX value in the issOrbit animation
+            color: "Metallic Gray and Blue",
+            orbitPeriod: 90, // This should match the issOrbit animation duration
+            size: 40, // Width of the ISS representation
+            info: "The ISS orbits at about 400 km above Earth's surface. It completes 15.5 orbits per day, traveling at 7.66 km/s."
+        }));
+    }
+    function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const allObjects = document.querySelectorAll('.space-object');
+            
+            // Reset all objects
+            allObjects.forEach(obj => {
+                obj.classList.remove('zoomed', 'highlighted');
+            });
+            
+            // Find matching object
+            const matchingObject = Array.from(allObjects).find(obj => {
+                const objectName = obj.getAttribute('data-name').toLowerCase();
+                return objectName.includes(searchTerm);
+            });
+            
+            if (matchingObject) {
+                // Zoom and highlight the found object
+                matchingObject.classList.add('zoomed', 'highlighted');
+                
+                // Find and display object info
+                const objectData = spaceObjects.find(obj => 
+                    obj.name.toLowerCase().includes(searchTerm)
+                );
+                if (objectData) {
+                    showObjectInfo(objectData);
+                }
+            }
+        }
+
+        function createSpaceObject(object) {
+            const container = document.createElement('div');
+            container.className = 'space-object';
+            container.setAttribute('data-name', object.name);
+            container.style.setProperty('--orbit-radius', `${object.orbitRadius}px`);
+            
+            const objectEl = document.createElement('div');
+            objectEl.style.width = objectEl.style.height = `${object.size}px`;
+            objectEl.style.backgroundColor = object.color;
+            objectEl.style.borderRadius = object.type === 'sphere' ? '50%' : '25%';
+            
+            container.appendChild(objectEl);
+            container.style.animation = `orbit ${object.orbitPeriod}s linear infinite`;
+            
+            container.addEventListener('click', () => {
+                // Remove zoomed class from all objects
+                document.querySelectorAll('.space-object').forEach(obj => {
+                    obj.classList.remove('zoomed');
+                });
+                // Add zoomed class to clicked object
+                container.classList.add('zoomed');
+                showObjectInfo(object);
+            });
+            
+            return container;
+        }
+
+        function init() {
+            createStars();
+            const earthContainer = document.querySelector('.earth-container');
+            
+            spaceObjects.forEach(object => {
+                const orbit = createOrbit(object.orbitRadius);
+                const spaceObject = createSpaceObject(object);
+                orbit.appendChild(spaceObject);
+                earthContainer.appendChild(orbit);
+            });
+            
+            createObjectList();
+            initializeSearch();
+            createMoon();
+            createISS();
+        }
+        const uniqueObjects = new Set();
+spaceObjects.forEach(object => {
+    if (object.name && !uniqueObjects.has(object.name)) {
+        uniqueObjects.add(object.name);
+        
+        // Assuming you want to create the list item here:
+        const item = document.createElement('div');
+        item.className = 'object-list-item';
+        item.textContent = object.name;
+        item.addEventListener('click', () => showObjectInfo(object));
+        
+        document.querySelector('.object-list-items').appendChild(item);
+    }
+});
+
+    </script>
+</body>
+</html>

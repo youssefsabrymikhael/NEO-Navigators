@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2011 ES4 Details</title>
+    <link rel="stylesheet" href="styles.css"> <!-- رابط لملف CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_1280.jpg'); /* استخدم رابط خلفية جديد من Pixabay */
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: auto; /* جعل الصفحة قابلة للتمرير */
+            height: 100vh; /* ضمان ملئ ارتفاع الصفحة */
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .details-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+        img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #FFD700; /* إطار ذهبي */
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        /* نجوم متحركة */
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h1>2011 ES4</h1>
+        <img src="https://files.oaiusercontent.com/file-zbwtfkC1tLJVmMLFDjsZTWIN?se=2024-10-02T19%3A05%3A38Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D695191a0-6665-4bbd-9d8c-1fecf363a85b.webp&sig=Kpv%2BGahiZ3APf2uYqQ3FOLJaDeWQ%2Bt4kcKukFz91ON8%3D" alt="2011 ES4">
+        <h2>Synopsis</h2>
+        <p>The near-Earth asteroid 2011 ES4 attracted interest because of how close it was to Earth. It is essential to comprehend its characteristics and path in order to evaluate possible hazards and for instructional purposes.</p>
+        <h2>Finding out</h2>
+        <p>Finding out Date: March 7, 2011<br>
+        Finding Body: The Catalina Sky Survey, a program devoted to monitoring near-Earth objects, made the discovery of the asteroid.</p>
+        <h2>Physical attributes</h2>
+        <p>Dimensions: Approximate diameter: 20 to 50 meters, or 65 to 164 feet.<br>
+        Make-up: Material: 2011 ES4 is most likely made of rock and metal.</p>
+        <h2>Orbital Dynamics</h2>
+        <p>Type: Apollo class<br>
+        Orbital Period: 1.37 Earth years.</p>
+        <h2>Approaching Velocity</h2>
+        <p>Velocity: 7.6 km/s (approximately 17,000 mph).</p>
+        <h2>Closest Approach</h2>
+        <p>Date: September 1, 2020<br>
+        Nearest Distance: 1,830 km (1,140 miles).</p>
+        <h2>Potential Danger Assessment</h2>
+        <p>2011 ES4 did not present any immediate threat. Its course was perfectly calculated.</p>
+        <h2>Implications for Science and Education</h2>
+        <p>Close encounters such as that of 2011 ES4 offer a great opportunity to spread awareness through education on the importance of monitoring NEOs.</p>
+        <h2>Learn More</h2>
+        <p>For more details, you can visit the following links:<br>
+        <a href="https://www.spacereference.org/asteroid/2011-es4" target="_blank" style="color: #FFD700;">Space Reference</a><br>
+        <a href="https://cneos.jpl.nasa.gov/ca/" target="_blank" style="color: #FFD700;">NASA JPL Small Body Database</a></p>
+    </div>
+
+    <script>
+        // دالة لإنشاء النجوم المتحركة
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; // مدة متغيرة
+                container.appendChild(star);
+            }
+        }
+
+        // إنشاء 50 نجمة
+        createStars(50);
+    </script>
+</body>
+</html>

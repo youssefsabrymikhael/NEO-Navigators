@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apophis Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_1280.jpg'); /* New background */
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .details-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #FFD700;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h1>Apophis</h1>
+        <img src="https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2024/04/asteroid_99942_apophis/26021615-1-eng-GB/Asteroid_99942_Apophis_pillars.jpg" alt="Apophis">
+        <h2>Discovery Details</h2>
+        <p><strong>Discovery Date:</strong> June 19, 2004</p>
+
+        <h2>Physical State</h2>
+        <p>
+            <strong>Diameter:</strong> ~340 meters<br>
+            <strong>Composition:</strong> Likely a stony asteroid, though more studies are needed.<br>
+            <strong>Surface:</strong> Still under study.
+        </p>
+        
+        <h2>Temperature</h2>
+        <p><strong>Temperature Range:</strong> Likely between -73°C to 100°C</p>
+        
+        <h2>Orbital Speed</h2>
+        <p><strong>Speed:</strong> ~30.73 km/s</p>
+        
+        <h2>Interesting Fact</h2>
+        <p><strong>Apophis will make a very close approach to Earth in 2029.</strong><br>
+        This event has sparked much interest among scientists and the public.</p>
+
+        <h2>Learn More</h2>
+        <p>For more details, you can visit the following link:<br>
+        <a href="https://science.nasa.gov/solar-system/asteroids/apophis/" target="_blank" style="color: #FFD700;">Learn more about Apophis</a></p>
+    </div>
+
+    <script>
+        // Function to create twinkling stars effect
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; 
+                container.appendChild(star);
+            }
+        }
+        createStars(50); // Create 50 stars
+    </script>
+</body>
+</html>

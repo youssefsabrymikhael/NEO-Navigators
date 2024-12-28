@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO Navigators - Contact Us</title>
+
+    <!-- Google Fonts for Space-like font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2016/11/21/12/39/stars-1845140_960_720.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 48px;
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        header p {
+            margin-top: 5px;
+            font-size: 22px;
+        }
+
+        /* Container for content */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 120px; /* Space for header */
+        }
+
+        .content {
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        /* Cards */
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 15px;
+            width: 400px; /* Wider cards */
+            text-align: center;
+            opacity: 0; /* Hidden initially */
+            transform: translateY(50px); /* Start slightly below */
+            transition: opacity 1s ease, transform 1s ease, transform 0.3s ease; /* Animation */
+        }
+
+        .card:hover {
+            transform: scale(1.05); /* Scale up on hover */
+            transition: transform 0.3s; /* Smooth scaling */
+        }
+
+        .card.show {
+            opacity: 1; /* Visible when scrolled into view */
+            transform: translateY(0); /* Bring it up to its place */
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .card h2 {
+            margin-top: 20px;
+            font-size: 28px;
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: 3px; /* Spacing for a space effect */
+        }
+
+        .card p {
+            margin: 10px 0;
+            font-size: 20px;
+            color: #E0E0E0;
+            letter-spacing: 2px; /* Spacing for a space effect */
+        }
+
+        /* Contact Info */
+        .contact-info {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .contact-info h2 {
+            font-size: 32px;
+            color: #FFD700;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        /* Starry background */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Starry background -->
+    <div class="stars"></div>
+
+    <!-- Header with Team Name -->
+    <header>
+        <h1>NEO Navigators Team</h1>
+        <p>Contact Us</p>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <!-- Team Member Cards -->
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://i.ibb.co/JpQjVYw/Whats-App-Image-2024-09-07-at-21-43-27-cd2d7d75.jpg" alt="Youssef Sabry">
+                    <h2>Youssef Sabry Mikhael</h2>
+                    <p>Web Developer</p>
+                    <ul>
+                        <li><strong>Age:</strong> 17</li>
+                        <li><strong>School:</strong> Asyut STEM School</li>
+                        <li><strong>Email:</strong> youssef.1423063@stemassiut.moe.edu.eg</li>
+                        <li><strong>Skills:</strong> HTML, CSS, JavaScript, Python</li>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/youssef-sabry-9b62132b3?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BuU%2FkCQfgTNSHmQIuWzRQlg%3D%3D" target="_blank">linkedin.com/in/youssef-sabry</a></li>
+                        <li><strong>Role in Project:</strong> Frontend Development</li>
+                        <li><strong>Achievements:</strong> Winner of National Programming Contest</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <img src="https://i.ibb.co/zbSKHwq/Whats-App-Image-2024-10-05-at-19-36-56-3856d55c.jpg" alt="Sara Ashraf Ibrahim">
+                    <h2>Sara Ashraf Ibrahim</h2>
+                    <p>Data Collector</p>
+                    <ul>
+                        <li><strong>Age:</strong> 16</li>
+                        <li><strong>School:</strong> Asyut STEM School</li>
+                        <li><strong>Email:</strong> Sara.1423535@stemassiut.moe.edu.eg</li>
+                        <li><strong>Skills:</strong> C++,time management ,marketing,collecting data</li>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sa-ash-29949b31a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">linkedin.com/in/Sara-Ashraf</a></li>
+                        <li><strong>Role in Project:</strong> collecting data</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://i.ibb.co/1LFtgnW/Whats-App-Image-2024-10-04-at-20-59-10-c8200f98.jpg" alt="Malak Amer Abd El Sabour">
+                    <h2>Malak Amer Abd El Sabour</h2>
+                    <p>Data Collector</p>
+                    <ul>
+                        <li><strong>Age:</strong> 17</li>
+                        <li><strong>School:</strong> Asyut STEM School</li>
+                        <li><strong>Email:</strong> Malak.1423559@stemassiut.moe.edu.eg</li>
+                        <li><strong>Skills:</strong> Arduino,collecting data</li>                        
+                        <li><strong>Role in Project:</strong> collecting data</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <img src="https://i.ibb.co/Rzfh5yY/Whats-App-Image-2024-10-04-at-21-15-53-fc136f89.jpg" alt="Maryam Amer Abd El Sabour">
+                    <h2>Maryam Amer Abd El Sabour</h2>
+                    <p>Data Collector</p>
+                    <ul>
+                        <li><strong>Age:</strong> 17</li>
+                        <li><strong>School:</strong> Asyut STEM School</li>
+                        <li><strong>Email:</strong> maryam.1423551@stemassiut.moe.edu.eg</li>
+                        <li><strong>Skills:</strong> Arduino and collecting data</li>
+                        <li><strong>Role in Project:</strong>  collecting data</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://i.ibb.co/zGg9WtG/Whats-App-Image-2024-10-04-at-21-38-57-ca7a2871.jpg" alt="Nermeen Sayed Maghraby">
+                    <h2>Nermeen Sayed Maghraby</h2>
+                    <p>Web Developer</p>
+                    <ul>
+                        <li><strong>Age:</strong> 16</li>
+                        <li><strong>School:</strong> Asyut STEM School</li>
+                        <li><strong>Email:</strong> Nermeensayed04@gmail.com</li>
+                        <li><strong>Skills:</strong> graphic designer ,web developer </li>
+                        <li><strong>Role in Project:</strong>  graphic design ,3D models , HTML and CSS and JavaScript codes</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <img src="https://i.ibb.co/5ntR3Jz/Whats-App-Image-2024-10-04-at-23-42-56-7c7ea262.jpg" alt="Bavly Ehab Fathy">
+                    <h2>Bavly Ehab Fathy</h2>
+                    <p>Data Collector</p>
+                    <ul>
+                        <li><strong>Age:</strong> 17</li>
+                        <li><strong>School:</strong> Asyut STEM School</li>
+                        <li><strong>Email:</strong> pavly.1423013@stemassiut.moe.edu.eg</li>
+                        <li><strong>Skills:</strong> Researching, Marketing</li>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bavly-ehab-3402182b5/" target="_blank">linkedin.com/in/Bavly Ehab</a></li>
+                        <li><strong>Role in Project:</strong> Data collector, Researcher</li>
+                        <li><strong>Achievements:</strong> Certificate of Participation in Exploring Asteroid Program Foundation sponsored by IASC</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p>If you have any questions or would like to get in touch, please contact us at:</p>
+                <p>Email: contact@neonavigators.com</p>
+                <p>Phone: +20 123 456 7890</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show cards when scrolling into view
+        const cards = document.querySelectorAll('.card');
+
+        function showCards() {
+            const windowHeight = window.innerHeight;
+            const revealPoint = windowHeight - 150; // When to reveal cards
+
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+
+                if (cardTop < revealPoint) {
+                    card.classList.add('show');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', showCards);
+        showCards(); // Initial check
+    </script>
+
+</body>
+</html>

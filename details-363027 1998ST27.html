@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid 363027 1998ST27 Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_1280.jpg'); /* New background */
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .details-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #FFD700;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h1>Asteroid 363027 1998ST27</h1>
+        <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1qCPUs.img?w=1635&h=920&m=4&q=79" alt="Asteroid 363027 1998ST27">
+        <h2>Orbital Properties</h2>
+        <p><strong>Epoch:</strong> 60600.0 (MJD)<br>
+        <strong>Orbit type:</strong> Aten<br>
+        <strong>Perihelion (q):</strong> 0.385 (au)<br>
+        <strong>Aphelion (Q):</strong> 1.254 (au)<br>
+        <strong>Eccentricity (e):</strong> 0.530<br>
+        <strong>Inclination (i):</strong> 21.1 (deg)<br>
+        <strong>Orbit period (P):</strong> 271.1 (d)<br>
+        <strong>Earth MOID:</strong> 0.00992 (au)<br>
+        <strong>U parameter:</strong> 0.0<br>
+        <strong>A2:</strong> 15.8 × 10<sup>-15</sup> au/days<sup>2</sup></p>
+        
+        <h2>Next Earth Close Approach</h2>
+        <p><strong>Date:</strong> 2024-10-12<br>
+        <strong>Nominal distance (from Earth center):</strong> 0.0238 (au) / 3561101 (km)<br>
+        <strong>Maximum Brightness:</strong> 13 (mag)</p>
+        
+        <h2>Risk</h2>
+        <p><strong>Object is not in risk list</strong><br>
+        <strong>Object is not in priority list</strong></p>
+
+        <h2>Learn More</h2>
+        <p>For more details, you can visit the following link:<br>
+        <a href="https://neo.ssa.esa.int/search-for-asteroids?sum=1&des=363027%201998ST27#:~:text=Asteroids-,363027%201998ST27,-help" target="_blank" style="color: #FFD700;">363027 1998ST27 on NEO SSA</a></p>
+    </div>
+
+    <script>
+        // Function to create twinkling stars effect
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; 
+                container.appendChild(star);
+            }
+        }
+        createStars(50); // Create 50 stars
+    </script>
+</body>
+</html>

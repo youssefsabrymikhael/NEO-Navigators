@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO Cards</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2011/12/14/12/17/galaxy-11098_1280.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: scroll; /* يسمح بتمرير الصفحة */
+            position: relative;
+            height: 200vh; /* اجعل ارتفاع الصفحة مزدوجًا لتتمكن من التمرير */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 3em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            margin: 15px;
+            width: 250px;
+            overflow: hidden;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(255, 215, 0, 0.6);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #FFD700;
+        }
+        .card h3 {
+            margin: 10px 0;
+            color: #FFD700;
+            font-size: 1.5em;
+        }
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+            filter: blur(2px);
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Explore the Universe of Near-Earth Objects</h1>
+    <div class="container">
+        <div class="card" onclick="window.location.href='details-2011es4.html'">
+            <img src="https://files.oaiusercontent.com/file-zbwtfkC1tLJVmMLFDjsZTWIN?se=2024-10-02T19%3A05%3A38Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D695191a0-6665-4bbd-9d8c-1fecf363a85b.webp&sig=Kpv%2BGahiZ3APf2uYqQ3FOLJaDeWQ%2Bt4kcKukFz91ON8%3D" alt="2011 ES4">
+            <h3>2011 ES4</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-mercury.html'">
+            <img src="https://cdn.pixabay.com/photo/2012/01/09/09/33/mercury-11591_1280.png" alt="Mercury">
+            <h3>Mercury</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-2020-VT4-Synopsis.html'">
+            <img src="https://files.oaiusercontent.com/file-IF9z4PcvCGaGKDhppuyYAPam?se=2024-10-02T20%3A22%3A52Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D7baa64ca-bf73-414c-8283-985280c25960.webp&sig=Ep6Utkf1P9gkp%2B55Ju72vv59SLID2zb%2BYiXW03Jqktk%3D" alt="2020 VT4 Synopsis">
+            <h3>2020 VT4</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-2023-BU.html'">
+            <img src="https://i.ibb.co/kK8krpw/Screenshot-2024-10-02-232701.png" alt="2023 BU">
+            <h3>2023 BU</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-ISS.html'">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWSxdCXAtNj7R6q4QejlMHW-JkowM_QYZuSmjcLi8jplxfhWYGlxAqq-dInYIIK-8Uy2I&usqp=CAU" alt="ISS">
+            <h3>International Space Station (ISS)</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-46610-Penelope.html'">
+            <img src="https://th.bing.com/th/id/OIG4.8j8MiQAlGe_XefczVNbr?rs=1&pid=ImgDetMain" alt="ISS">
+            <h3>Asteroid 46610 Penelope</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-Asteroid 2021 QM1.html'">
+            <img src="https://images.jpost.com/image/upload/q_auto/c_fill,g_faces:center,h_537,w_822/487268" alt="Asteroid 2021 QM1">
+            <h3>Asteroid 2021 QM1</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-Asteroid Psyche.html'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Psyche_illustration.jpg" alt="Asteroid Psyche">
+            <h3>Asteroid Psyche</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-2024SH7.html'">
+            <img src="https://files.oaiusercontent.com/file-B9xqBsxLegHvUy3M11lzw3UW?se=2024-10-04T10%3A26%3A26Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D31859f40-c62a-4fee-ae5c-fb25c897aa8b.webp&sig=nZtReJP0dxUoAm1gG/UhtYvfw4Baa9xDLYs3XU/u9/M%3D" alt="2024SH7">
+            <h3>2024SH7</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-2024RH45.html'">
+            <img src="https://files.oaiusercontent.com/file-wTncNYNeHWPlclUBvFYmiPGb?se=2024-10-04T10%3A37%3A20Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dab353c83-a59b-49ac-9ffe-7bba672b27e5.webp&sig=izmCpSOvZquiG4mBODH2jx8ecEpHB5Z1Des%2BW9hFd5c%3D" alt="2024RH45">
+            <h3>2024RH45</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-2024SC.html'">
+            <img src="https://files.oaiusercontent.com/file-AIosxmsV1mzXWkKxzfwJEsFs?se=2024-10-04T10%3A43%3A15Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Db1725513-2e25-42f4-927f-1e3658721d2f.webp&sig=4ZaJ5D4x0PR7jtmibjYtF1aol3lDCcP2MUC9B6fvdtY%3D" alt="2024SC">
+            <h3>2024SC</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-363305 2002NV16.html'">
+            <img src="https://files.oaiusercontent.com/file-LwvRkSPyYN4lj3nWHs8c4opS?se=2024-10-04T10%3A49%3A54Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dacc25a22-afe1-480e-b961-ea5b7c6eab23.webp&sig=ahS7t%2BMUvqKaIGsNL2FYqQpo0l3sNWQYnijAbHRxVFI%3D" alt="363305 2002NV16">
+            <h3>363305 2002NV16</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-2020WG.html'">
+            <img src="https://files.oaiusercontent.com/file-xW2xyYvdh4xMwtwBTNP0b0Dg?se=2024-10-04T10%3A55%3A41Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dd0a42aa8-2cab-4145-a626-787ba96516e9.webp&sig=g47UJPcv%2BdVkgTdjKzfTJldR78fH88BOnWTlQ1jm2wQ%3D" alt="2020WG">
+            <h3>2020WG</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-2020XR.html'">
+            <img src="https://science.nasa.gov/wp-content/uploads/2023/07/Asteroid_Vesta-1.jpeg?w=800" alt="2020XR">
+            <h3>2020XR</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-424482 2008DG5.html'">
+            <img src="https://www.spacereference.org/static/images/generic-asteroid.png" alt="424482 2008DG5">
+            <h3>424482 2008DG5</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-390725 2003HB.html'">
+            <img src="https://images.news18.com/ibnlive/uploads/2023/02/kilometer-wide-asteroid-to-hit-earths-atmosphere-167600805916x9.png" alt="390725 2003HB">
+            <h3>390725 2003HB</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-363027 1998ST27.html'">
+            <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1qCPUs.img?w=1635&h=920&m=4&q=79" alt="363027 1998ST27">
+            <h3>363027 1998ST27</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-2019QQ6.html'">
+            <img src="https://theasteroidnews.com/7767AUT/wp-content/uploads/2020/08/small-asteroid.jpg" alt="2019QQ6">
+            <h3>2019QQ6</h3>
+        </div>
+        
+        <div class="card" onclick="window.location.href='details-meteors.html'">
+            <img src="https://static.scientificamerican.com/sciam/cache/file/3C413E35-54FB-4690-AB17A213F928E090_source.jpg?w=1200" alt="meteors">
+            <h3>Meteors</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-Ceres.html'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Ceres_-_RC3_-_Haulani_Crater_%2822381131691%29_%28cropped%29.jpg" alt="Ceres">
+            <h3>Ceres</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-Vesta.html'">
+            <img src="https://www.nasa.gov/wp-content/uploads/2023/03/685735main_pia15678-43_full.jpg" alt="Vesta">
+            <h3>Vesta</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-Bennu.html'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Bennu_mosaic_OSIRIS-REx_%28square%29.png/435px-Bennu_mosaic_OSIRIS-REx_%28square%29.png" alt="Bennu">
+            <h3>Bennu</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-Eros.html'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Eros_-_PIA02923_%28color%29.jpg/290px-Eros_-_PIA02923_%28color%29.jpg" alt="Eros">
+            <h3>Eros</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-Apophis.html'">
+            <img src="https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2024/04/asteroid_99942_apophis/26021615-1-eng-GB/Asteroid_99942_Apophis_pillars.jpg" alt="Apophis">
+            <h3>Apophis</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-Psyche.html'">
+            <img src="https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcSK49RdhP0OUAjQg8YDOn3IcIdgQb6cWbP6bzPMuNFe068Cxxp9gUTyctF-jfMpyGwF" alt="Psyche">
+            <h3>Psyche</h3>
+        </div>
+        <div class="card" onclick="window.location.href='details-Ryugu.html'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Ryugu_rotation.gif/220px-Ryugu_rotation.gif" alt="Ryugu">
+            <h3>Ryugu</h3>
+        </div>
+        <!-- أضف المزيد من الكروت هنا -->
+    </div>
+    <script>
+        // دالة لإنشاء النجوم المتحركة
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 2 + 'px'; // عرض نجوم متغيرة
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; // مدة متغيرة
+                container.appendChild(star);
+            }
+        }
+
+        // إنشاء 100 نجمة
+        createStars(100);
+
+        // دالة للتمرير باللمس
+        let startY = 0;
+        document.addEventListener('touchstart', (event) => {
+            startY = event.touches[0].clientY; // احفظ موضع اللمس الأول
+        });
+
+        document.addEventListener('touchmove', (event) => {
+            const touchY = event.touches[0].clientY; // احصل على موضع اللمس الحالي
+            const scrollDiff = startY - touchY; // احسب الفرق
+            window.scrollBy(0, scrollDiff); // قم بالتمرير بناءً على الفرق
+            startY = touchY; // تحديث موضع اللمس
+        });
+    </script>
+</body>
+</html>

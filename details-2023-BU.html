@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2023 BU Details</title>
+    <link rel="stylesheet" href="styles.css"> <!-- رابط لملف CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_1280.jpg'); /* استخدم رابط خلفية جديد من Pixabay */
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: auto; /* جعل الصفحة قابلة للتمرير */
+            height: 100vh; /* ضمان ملئ ارتفاع الصفحة */
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .details-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+        img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #FFD700; /* إطار ذهبي */
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        /* نجوم متحركة */
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h1>2023 BU</h1>
+        <img src="https://cdn.mos.cms.futurecdn.net/EuDE7LBLaWpVThXxpRrVeL-1200-80.jpg" alt="2023 BU">
+        <h2>Synopsis</h2>
+        <p>A near-Earth asteroid of this type was found on January 24, 2023, in Arizona by the Mt. Lemmon Survey.</p>
+        <h2>Physical attributes</h2>
+        <p>Size: Estimated diameter ranges from 3.5 to 8.5 meters (11 to 28 ft).<br>
+        Composition: Appears to be a stony asteroid based on available information.<br>
+        Velocity: At its closest approach to Earth, its velocity was approximately 9.6 km/s, or 21,500 mph.</p>
+        <h2>The Closest Approach</h2>
+        <p>Date: 27 January 2023<br>
+        Distance: Reached one of the closest passes ever recorded by a NEO, passing approximately 3,600 km (2,200 miles) from Earth's surface.</p>
+        <h2>Possible Hazards</h2>
+        <p>Details on potential hazards will be assessed by space organizations to ensure monitoring of near-Earth objects like 2023 BU.</p>
+        <p>For more details, you can visit the following links:<br>
+            <a href="https://www.nasa.gov/solar-system/asteroids/nasa-system-predicts-small-asteroid-to-pass-close-by-earth-this-week/" target="_blank" style="color: #FFD700;">NASA - 2023 BU</a><br>
+            <a href="https://www.livescience.com/small-asteroid-exceptionally-close-flyby" target="_blank" style="color: #FFD700;">LiveScience - 2023 BU​</a></p>
+    </div>
+    </div>
+
+    <script>
+        // دالة لإنشاء النجوم المتحركة
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; // مدة متغيرة
+                container.appendChild(star);
+            }
+        }
+
+        // إنشاء 50 نجمة
+        createStars(50);
+    </script>
+</body>
+</html>

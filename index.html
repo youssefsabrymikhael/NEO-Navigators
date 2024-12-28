@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEOs Orrery App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: hsla(0, 93%, 10%, 0.9); /* لون خلفية داكن */
+      color: #ccc; /* لون نص داكن */
+    }
+
+    /* Video Background */
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      overflow: hidden;
+    }
+
+    .video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.453); /* خلفية داكنة */
+      padding: 20px;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00d4ff;
+    }
+
+    .login-btn {
+      background-color: #1b263b;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      margin-right: 30px;
+    }
+
+    .login-btn:hover {
+      background-color: #415a77;
+    }
+
+    /* Container for the text over the video */
+    .text-over-video {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      text-align: center;
+      color: white;
+      z-index: 3;
+      width: 80%;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 60px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .question {
+      display: block;
+      background-color: rgba(255, 69, 0, 0.8); /* لون أحمر داكن */
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 30px;
+      margin: 20px auto; /* Center the question */
+      text-align: center;
+      width: 90%; /* Add width */
+      transition: transform 0.3s; /* Animation */
+    }
+
+    .question:hover {
+      transform: scale(1.05); /* Scale effect on hover */
+    }
+
+    .answer {
+      display: block;
+      background-color: rgba(0, 191, 255, 0.8); /* لون أزرق داكن */
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 26px;
+      margin: 20px auto; /* Center the answer */
+      text-align: center;
+      width: 90%; /* Add width */
+      transition: transform 0.3s; /* Animation */
+    }
+
+    .answer:hover {
+      transform: scale(1.05); /* Scale effect on hover */
+    }
+
+    p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 20px auto; /* Center the paragraph */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      color: #ddd; /* لون نص داكن */
+    }
+
+    /* Video section spacing */
+    .video-spacing {
+      margin: 40px 0; /* Space between question sections */
+      text-align: center;
+    }
+
+    /* Container for question and video */
+    .qa-container {
+      display: flex;
+      align-items: flex-start; /* Align items to the start */
+      justify-content: center; /* Center the container */
+      margin: 20px; /* Add margin */
+    }
+
+    /* Video Styling */
+    .video {
+      margin-left: 30px; /* Space between video and questions */
+      max-width: 500px; /* زيادة عرض الفيديو */
+      border: 5px solid rgba(255, 255, 255, 0.5); /* حد حول الفيديو */
+      border-radius: 10px; /* زوايا دائرية */
+    }
+
+    .question-answer {
+      flex: 1; /* Allow question and answer to take available space */
+      margin-right: 30px; /* Space between questions and video */
+    }
+
+    .description {
+      display: none; /* إخفاء النص بشكل افتراضي */
+      animation: fadeIn 2s; /* إضافة تأثير الفيد ان */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Background Section (Upper Half) -->
+  <div class="video-container">
+    <video class="video-bg" autoplay loop muted>
+      <source src="https://videos.pexels.com/video-files/856309/856309-hd_1920_1080_30fps.mp4" type="video/mp4">
+    </video>
+
+    <!-- Text Over the Video -->
+    <div class="text-over-video">
+      <h1 id="dynamic-title"></h1>
+      <p class="description" id="description-text">
+        Discover the fascinating world of Near-Earth Objects (NEOs) through our interactive orrery! Learn about their movements and why monitoring them is crucial for Earth's safety.
+      </p>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="Interactive Orrery.html" >Interactive Orrery</a></li>
+      <li><a href="NEO Details.html" >NEO Details</a></li>
+      <li><a href="Alerts.html" >Alerts</a></li>
+      <li><a href="About NEOs.html" >About NEOs</a></li>
+      <li><a href="VR Video.html" >VR Video</a></li>
+      <li><a href="Contact.html" >Contact</a></li>
+    </ul>
+    <img src="https://i.ibb.co/dDZg6GB/Whats-App-Image-2024-10-04-at-16-22-22-92f68e2e.jpg" alt="Team Logo" style="height: 70px; margin-right: -400px;"> <!-- تعديل المسار للصورة -->
+    <a href="log in.html" class="login-btn" >Log In</a>
+  </nav>
+
+  <!-- Main Content (Lower Half) -->
+  <div class="container">
+    <!-- Question and Video Container -->
+    <div class="qa-container">
+      <div class="question-answer">
+        <span class="question">What are Near-Earth Objects (NEOs)?</span>
+        <span class="answer">
+          Near-Earth Objects (NEOs) are asteroids and comets that have orbits bringing them into proximity with Earth. Monitoring these objects is crucial to identify potential threats, as their trajectories can change due to gravitational influences or collisions with other celestial bodies.
+        </span>
+      </div>
+      <div class="video">
+        <video width="100%" controls>
+          <source src="H:\HTML\NEOs Orrery App\what-are-near-earth-objects-hdez8hyc_08wviBD3.mp4" type="video/mp4"> <!-- Replace with your video source -->
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <span class="question">Why is monitoring NEOs important?</span>
+    <span class="answer">
+      Regular observation and tracking of NEOs enable astronomers to predict their paths accurately, which is essential for planetary defense strategies aimed at mitigating the risks associated with these celestial bodies.
+    </span>
+
+    <p>
+      NEOs vary in size, composition, and origin. Some are remnants from the early solar system, while others are fragments from larger bodies that have broken apart. Understanding these objects helps scientists assess any potential risk they may pose to our planet.
+    </p>
+    <p>
+      Explore our interactive orrery to see the movements of NEOs and learn more about their fascinating characteristics!
+    </p>
+  </div>
+
+  <script>
+    const title = "Welcome to NEOs Orrery App";
+    const titleElement = document.getElementById('dynamic-title');
+    const descriptionText = document.getElementById('description-text');
+    let index = 0;
+
+    function typeTitle() {
+      if (index < title.length) {
+        titleElement.textContent += title.charAt(index);
+        index++;
+        setTimeout(typeTitle, 100); // Control the typing speed (milliseconds)
+      } else {
+        // بعد الانتهاء من كتابة العنوان، يظهر الوصف
+        descriptionText.style.display = "block";
+      }
+    }
+
+    // Start typing the title when the page loads
+    window.onload = typeTitle();
+  </script>
+</body>
+</html>

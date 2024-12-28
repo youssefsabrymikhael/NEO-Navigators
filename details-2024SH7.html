@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid 2024 SH7 Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_1280.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .details-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #FFD700;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h1>Asteroid 2024 SH7</h1>
+        <img src="https://files.oaiusercontent.com/file-B9xqBsxLegHvUy3M11lzw3UW?se=2024-10-04T10%3A26%3A26Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D31859f40-c62a-4fee-ae5c-fb25c897aa8b.webp&sig=nZtReJP0dxUoAm1gG/UhtYvfw4Baa9xDLYs3XU/u9/M%3D" alt="Asteroid 2024 SH7">
+        
+        <h2>Orbital Properties</h2>
+        <p><strong>Epoch:</strong> 60600.0 (MJD)<br>
+        <strong>Orbit type:</strong> Amor<br>
+        <strong>Aphelion (Q):</strong> 2.161 (au)<br>
+        <strong>Eccentricity (e):</strong> 0.360<br>
+        <strong>Inclination (i):</strong> 17.5° (deg)<br>
+        <strong>Orbit period (P):</strong> 731.8 (days)<br>
+        <strong>Earth MOID:</strong> 0.02170 (au)<br>
+        <strong>U parameter:</strong> 7.4</p>
+        
+        <h2>Next Earth Close Approach</h2>
+        <p><strong>Date:</strong> 2026-10-04<br>
+        <strong>Nominal distance:</strong> 0.0268 (au) / 4,008,712 (km)<br>
+        <strong>Maximum Brightness:</strong> 20.9 (mag)</p>
+        
+        <h2>Risk</h2>
+        <p><strong>Status:</strong> Object is not on the risk list.<br>
+        <strong>Priority:</strong> Object is on the priority list.</p>
+        
+        <h2>Learn More</h2>
+        <p>For more details, visit the following link:<br>
+        <a href="https://neo.ssa.esa.int/search-for-asteroids?sum=1&des=2024SH7#:~:text=Asteroids-,2024SH7,-help" target="_blank" style="color: #FFD700;">2024 SH7 - ESA NEO</a></p>
+    </div>
+
+    <script>
+        // Function to create twinkling stars effect
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; 
+                container.appendChild(star);
+            }
+        }
+        createStars(50); // Create 50 stars
+    </script>
+</body>
+</html>

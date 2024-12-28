@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid 2021 QM1 Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2020/03/30/13/29/space-4984262_1280.jpg'); /* New background */
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .details-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #FFD700;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h1>Asteroid 2021 QM1</h1>
+        <img src="https://images.jpost.com/image/upload/q_auto/c_fill,g_faces:center,h_537,w_822/487268" alt="Asteroid 2021 QM1">
+        <h2>Overview</h2>
+        <p>Asteroid 2021 QM1 is a near-Earth object that was discovered on August 24, 2021. It has garnered significant interest due to its close approaches to Earth.</p>
+        
+        <h2>Key Details</h2>
+        <p><strong>Diameter:</strong> Estimated to be between 50 to 100 meters (164 to 328 feet).<br>
+        <strong>Composition:</strong> Likely composed of rock and metals, similar to most asteroids.<br>
+        <strong>Classification:</strong> Classified as a Near-Earth Object (NEO) and is part of the Apollo group of asteroids.</p>
+        
+        <h2>Orbital Dynamics</h2>
+        <p><strong>Orbital Period:</strong> Completes an orbit around the Sun approximately every 1.3 years (about 485 days).<br>
+        <strong>Path:</strong> Crosses the orbit of Earth and other asteroid belts.<br>
+        <strong>Approach Velocity:</strong> Expected speed during close approaches is about 12.7 km/s (around 28,400 mph).</p>
+        
+        <h2>Potential Threat</h2>
+        <p>Initially considered a potential impact threat due to its close approach in 2052. Subsequent observations confirmed that there is no risk of collision.</p>
+
+        <h2>Scientific Exploration</h2>
+        <p>Asteroid 2021 QM1 is a subject of study for scientists to understand asteroid characteristics and assess potential risks they may pose. It is regularly monitored by programs like NASA's Near-Earth Object (NEO) program.</p>
+
+        <h2>Learn More</h2>
+        <p>For more details, you can visit the following links:<br>
+        <a href="https://neo.jpl.nasa.gov/" target="_blank" style="color: #FFD700;">NASA - Near-Earth Object Program</a><br>
+        <a href="https://cneos.jpl.nasa.gov/ca/2021QM1.html" target="_blank" style="color: #FFD700;">Asteroid 2021 QM1 Information</a></p>
+    </div>
+
+    <script>
+        // Function to create twinkling stars effect
+        function createStars(numStars) {
+            const container = document.body;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 1 + 0.5 + 's'; 
+                container.appendChild(star);
+            }
+        }
+        createStars(50); // Create 50 stars
+    </script>
+</body>
+</html>
